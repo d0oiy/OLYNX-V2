@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelaporan Kejadian Bencana</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input, .form-group textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: green;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: darkgreen;
+        }
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .report-table th, .report-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .report-table th {
+            background-color: #f8f8f8;
+        }
+        .btn-edit, .btn-delete {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-delete {
+            background-color: #f44336;
+        }
+        .btn-edit:hover {
+            background-color: #45a049;
+        }
+        .btn-delete:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Pelaporan Kejadian Bencana</h1>
+        <div class="form-group">
+            <label for="namaPelapor">Nama Pelapor</label>
+            <input type="text" id="namaPelapor" placeholder="Masukkan nama pelapor">
+        </div>
+        <div class="form-group">
+            <label for="jenisBencana">Jenis Bencana</label>
+            <input type="text" id="jenisBencana" placeholder="Masukkan jenis bencana">
+        </div>
+        <div class="form-group">
+            <label for="lokasi">Lokasi</label>
+            <input type="text" id="lokasi" placeholder="Masukkan lokasi bencana">
+        </div>
+        <div class="form-group">
+            <label for="deskripsi">Deskripsi</label>
+            <textarea id="deskripsi" rows="4" placeholder="Masukkan deskripsi bencana"></textarea>
+        </div>
+        <button class="btn" id="submit">Submit Laporan</button>
+
+        <h2>Laporan Kejadian</h2>
+        <table class="report-table" id="reportTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Pelapor</th>
+                    <th>Jenis Bencana</th>
+                    <th>Lokasi</th>
+                    <th>Deskripsi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="reportData"></tbody>
+        </table>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getDatabase, ref, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBp_tiaNIrZX5p2AUDSZzEfElLqWPaKqgs",
+            authDomain: "donasi-2163c.firebaseapp.com",
+            projectId: "donasi-2163c",
+            storageBucket: "donasi-2163c.appspot.com",
+            messagingSenderId: "933715226679",
+            appId: "1:933715226679:web:686366534658d72b7ecfb2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        const namaPelapor = document.getElementById('namaPelapor');
+        const jenisBencana = document.getElementById('jenisBencana');
+        const lokasi = document.getElementById('lokasi');
+        const deskripsi = document.getElementById('deskripsi');
+        const submit = document.getElementById('submit');
+        const reportData = document.getElementById('reportData');
+
+        submit.addEventListener('click', () => {
+            const data = {
+                namaPelapor: namaPelapor.value,
+                jenisBencana: jenisBencana.value,
+                lokasi: lokasi.value,
+                deskripsi: deskripsi.value
+            };
+            push(ref(database, 'laporanBencana'), data)
+                .then(() => {
+                    namaPelapor.value = '';
+                    jenisBencana.value = '';
+                    lokasi.value = '';
+                    deskripsi.value = '';
+                    alert('Laporan berhasil ditambahkan');
+                })
+                .catch((error) => {
+                    alert('Laporan gagal ditambahkan');
+                });
+        });
+
+        function addReportToTable(key, data) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${reportData.rows.length + 1}</td>
+                <td>${data.namaPelapor}</td>
+                <td>${data.jenisBencana}</td>
+                <td>${data.lokasi}</td>
+                <td>${data.deskripsi}</td>
+                <td>
+                    <button class="btn-edit" onclick="editReport('${key}', '${data.namaPelapor}', '${data.jenisBencana}', '${data.lokasi}', '${data.deskripsi}')">Edit</button>
+                    <button class="btn-delete" onclick="deleteReport('${key}')">Delete</button>
+                </td>
+            `;
+            reportData.appendChild(row);
+        }
+
+        function getAllReports() {
+            const dbRef = ref(database, 'laporanBencana');
+            onValue(dbRef, (snapshot) => {
+                reportData.innerHTML = '';
+                snapshot.forEach((childSnapshot) => {
+                    const key = childSnapshot.key;
+                    const data = childSnapshot.val();
+                    addReportToTable(key, data);
+                });
+            });
+        }
+
+        getAllReports();
+
+        window.editReport = function (key, namaPelapor, jenisBencana, lokasi, deskripsi) {
+            document.getElementById('namaPelapor').value = namaPelapor;
+            document.getElementById('jenisBencana').value = jenisBencana;
+            document.getElementById('lokasi').value = lokasi;
+            document.getElementById('deskripsi').value = deskripsi;
+            document.getElementById('submit').onclick = function () {
+                updateReport(key);
+            };
+        };
+
+        function updateReport(key) {
+            const data = {
+                namaPelapor: document.getElementById('namaPelapor').value,
+                jenisBencana: document.getElementById('jenisBencana').value,
+                lokasi: document.getElementById('lokasi').value,
+                deskripsi: document.getElementById('deskripsi').value
+            };
+            update(ref(database, 'laporanBencana/' + key), data)
+                .then(() => {
+                    document.getElementById('submit').onclick = () => tambahData();
+                    namaPelapor.value = '';
+                    jenisBencana.value = '';
+                    lokasi.value = '';
+                    deskripsi.value = '';
+                    alert('Laporan berhasil diupdate');
+                })
+                .catch((error) => {
+                    alert('Laporan gagal diupdate');
+                });
+        }
+
+        window.deleteReport = function (key) {
+            remove(ref(database, 'laporanBencana/' + key))
+                .then(() => {
+                    alert('Laporan berhasil dihapus');
+                })
+                .catch((error) => {
+                    alert('Laporan gagal dihapus');
+                });
+        };
+    </script>
+</body>
+</html>

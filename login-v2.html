@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISPETIMIBA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-xrZ5UauBmqDFUHlTx8F7KvHmLleDg5WLA0AALZY7zjzI0aWQQ9xc3vKyoM5cvc7G" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #F3F7EC;
+            transition: margin-left 0.3s;
+        }
+        header {
+            background: #F3F7EC;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #322C2B;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+        .open-btn {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+        .main-content {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .navigation {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .prev, .next {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .features {
+            text-align: center;
+            padding: 2rem;
+            background: #43766C;
+        }
+        .features h2 {
+            margin-bottom: 1rem;
+        }
+        .features .feature {
+            display: inline-block;
+            width: 30%;
+            margin: 1%;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+        .container {
+            display: flex;
+            justify-content: center;
+}
+
+        .info-box {
+            width: 200px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 24px;
+            color: #007bff; /* warna ikon bisa disesuaikan */
+        }
+
+        .description {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .number {
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745; /* warna angka bisa disesuaikan */
+        }
+        .informasi{
+            text-align: center;
+            background-color: #43766C;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <span class="open-btn" onclick="openSidebar()">&#9776;</span>
+    <h1></h1>
+</header>
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" onclick="closeSidebar()">&#9776; Tutup</a>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</div>
+
+<div class="main-content" id="main-content">
+    <div class="slider">
+        <div class="slides">
+            <div class="slide" onclick="location.href='./pelaporan.html'">
+                <img src="Assets.png" width="1000" height="400" alt="Fitur 1">
+            </div>
+            <div class="slide" onclick="location.href='./pelaporan.html'">
+                <img src="lapor.png" alt="Fitur 2">
+            </div>
+            <div class="slide" onclick="location.href='http://example.com/fitur2'">
+                <img src="infografis.png" alt="Fitur 2">
+            </div>
+            <div class="slide" onclick="location.href='http://example.com/fitur3'">
+                <img src="https://via.placeholder.com/1000x400.png?text=Fitur+3" alt="Fitur 3">
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+    </div>
+<div class="informasi">
+    <h2>Informasi Bencana di Kalimantan Selatan</h2>
+</div>
+    <div class="container">
+        <div class="info-box">
+            <i class="icon fas fa-info-circle"></i>
+            <div class="description">Ini adalah contoh informasi.</div>
+            <div class="number">123</div>
+        </div>
+        <div class="info-box">
+            <i class="icon fas fa-info-circle"></i>
+            <div class="description">Informasi lainnya.</div>
+            <div class="number">456</div>
+        </div>
+        <div class="info-box">
+            <i class="icon fas fa-info-circle"></i>
+            <div class="description">Deskripsi lainnya.</div>
+            <div class="number">789</div>
+        </div>
+    </div>
+    
+
+    <section class="features">
+        <h2>Fitur-Fitur Kami</h2>
+        <div class="feature">Fitur 1: Deskripsi fitur yang menarik dan bermanfaat.</div>
+        <div class="feature">Fitur 2: Deskripsi fitur yang menarik dan bermanfaat.</div>
+        <div class="feature">Fitur 3: Deskripsi fitur yang menarik dan bermanfaat.</div>
+    </section>
+</div>
+
+<script>
+    function openSidebar() {
+        document.getElementById("sidebar").style.left = "0";
+        document.getElementById("main-content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.left = "-250px";
+        document.getElementById("main-content").style.marginLeft = "0";
+    }
+
+    let index = 0;
+    const slides = document.querySelector('.slides');
+    const slide = document.querySelectorAll('.slide');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+
+    function showSlide(n) {
+        index = (n + slide.length) % slide.length;
+        slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+    }
+
+    function showNextSlide() {
+        showSlide(index + 1);
+    }
+
+    function showPrevSlide() {
+        showSlide(index - 1);
+    }
+
+    next.addEventListener('click', showNextSlide);
+    prev.addEventListener('click', showPrevSlide);
+
+    setInterval(showNextSlide, 5000); // Ganti slide setiap 5 detik
+</script>
+
+</body>
+</html>
