@@ -5,50 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISPETIMIBA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-xrZ5UauBmqDFUHlTx8F7KvHmLleDg5WLA0AALZY7zjzI0aWQQ9xc3vKyoM5cvc7G" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #F3F7EC;
+            background: #FFF6E9;
             transition: margin-left 0.3s;
         }
         header {
-            background: #F3F7EC;
-            color: white;
+            background: #006769;
             padding: 1rem;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
         }
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            background-color: #322C2B;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
+        header img {
+            height: 50px;
+            margin-right: 10px;
         }
-        .sidebar a {
-            padding: 10px 15px;
+        header h1{
+            color: #fffcfb;
+            position: static;
+        }
+        header a{
+            color: #fffcfb;
             text-decoration: none;
+            margin: 0 15px;
             font-size: 18px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
         }
-        .sidebar a:hover {
+        header a:hover{
             color: #f1f1f1;
         }
-        .open-btn {
-            font-size: 30px;
-            cursor: pointer;
-            color: white;
-            position: absolute;
-            top: 10px;
-            left: 15px;
-        }
+        .informasi-terkini {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    background: #f2f2f2;
+}
+
+.informasi-terkini-container {
+    display: flex;
+    width: 50%;
+    animation: slide 15s infinite;
+}
+
+.slide-head {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 2px;
+    text-align: center;
+    background: #333;
+    color: #fff;
+}
+
+.slide-head a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.slide-head a:hover {
+    text-decoration: underline;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33.33% { transform: translateX(-100%); }
+    66.66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+}
+
         .main-content {
             margin-left: 0;
             transition: margin-left 0.3s;
@@ -60,7 +90,7 @@
             margin: 2rem auto;
             overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px #322C2B;
         }
         .slides {
             display: flex;
@@ -93,7 +123,7 @@
         .features {
             text-align: center;
             padding: 2rem;
-            background: #43766C;
+            background: #FFF6E9;
         }
         .features h2 {
             margin-bottom: 1rem;
@@ -103,9 +133,9 @@
             width: 30%;
             margin: 1%;
             padding: 1rem;
-            background: #f9f9f9;
+            background: #fffcfb;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px wheat;
             }
         .container {
             display: flex;
@@ -115,10 +145,14 @@
         .info-box {
             width: 200px;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: white;
             border: 1px solid #ccc;
             border-radius: 5px;
             text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .info-box:hover{
+            transform: scale(1.05);
         }
 
         .icon {
@@ -135,28 +169,126 @@
             margin-top: 10px;
             font-size: 24px;
             font-weight: bold;
-            color: #28a745; /* warna angka bisa disesuaikan */
+            color: #28a745;
         }
         .informasi{
             text-align: center;
-            background-color: #43766C;
         }
+        .news {
+            background: #FFFCFB;
+            padding: 2rem;
+            text-align: center;
+        }
+        .news h2 {
+            margin-bottom: 1rem;
+        }
+        .news .news-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+        .news .news-item img {
+            max-width: 150px;
+            margin-right: 1rem;
+        }
+        .news .news-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .news .news-item h3 a{
+            text-decoration: none;
+            color: #006769;
+        }
+        .news .news-item h3 a:hover {
+            text-decoration: underline;
+        }
+        
+        .news .news-item p {
+            margin: 0.5rem 0 0;
+            font-size: 0.9rem;
+        }
+        footer {
+            background: #322C2B;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul, .footer-section a {
+    margin: 5px 0;
+    color: #bbb;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #fff;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #322C2B;
+    margin-top: 20px;
+}
     </style>
 </head>
 <body>
 <header>
-    <span class="open-btn" onclick="openSidebar()">&#9776;</span>
-    <h1></h1>
+    <img src="logo new.png" alt="Logo" width="100px" height="1000px">
+    <h1>Sistem Informasi Kalimantan Selatan</h1>
+    <section style="margin-left: 220px;">
+        <a href="login-v2.html">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>  
+    </section>
 </header>
-
-<div class="sidebar" id="sidebar">
-    <a href="javascript:void(0)" onclick="closeSidebar()">&#9776; Tutup</a>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-</div>
-
+<section class="informasi-terkini">
+    <div class="informasi-terkini-container">
+        <div class="slide-head">
+            <a href="page1.html">This is Slide 1. Click to go to Page 1</a>
+        </div>
+        <div class="slide-head">
+            <a href="page2.html">This is Slide 2. Click to go to Page 2</a>
+        </div>
+        <div class="slide-head">
+            <a href="page3.html">This is Slide 3. Click to go to Page 3</a>
+        </div>
+    </div>
+    </section>    
 <div class="main-content" id="main-content">
     <div class="slider">
         <div class="slides">
@@ -169,8 +301,8 @@
             <div class="slide" onclick="location.href='http://example.com/fitur2'">
                 <img src="infografis.png" alt="Fitur 2">
             </div>
-            <div class="slide" onclick="location.href='http://example.com/fitur3'">
-                <img src="https://via.placeholder.com/1000x400.png?text=Fitur+3" alt="Fitur 3">
+            <div class="slide" onclick="location.href='./mitigasi.html'">
+                <img src="MITIGASI.png" alt="Fitur 3">
             </div>
         </div>
         <div class="navigation">
@@ -179,32 +311,102 @@
         </div>
     </div>
 <div class="informasi">
-    <h2>Informasi Bencana di Kalimantan Selatan</h2>
+    <h2> Rekap Bencana di Kalimantan Selatan</h2>
 </div>
     <div class="container">
         <div class="info-box">
             <i class="icon fas fa-info-circle"></i>
-            <div class="description">Ini adalah contoh informasi.</div>
-            <div class="number">123</div>
+            <div class="number">4</div>
+            <img src="https://www.pngplay.com/wp-content/uploads/6/Flood-Logo-PNG-HD-Quality.png" alt="fire" height="100px">
+            <div class="description">Jumlah Kejadian Banjir Di Kalimantan Selatan</div>
         </div>
         <div class="info-box">
             <i class="icon fas fa-info-circle"></i>
-            <div class="description">Informasi lainnya.</div>
-            <div class="number">456</div>
+            <div class="number">10</div>
+            <img src="https://sohoart.b-cdn.net/wp-content/uploads/2019/05/fire-500x500.png" alt="fire" height="100px">
+            <div class="description">Jumlah Kejadian KARHUTLA</div>
         </div>
         <div class="info-box">
             <i class="icon fas fa-info-circle"></i>
-            <div class="description">Deskripsi lainnya.</div>
-            <div class="number">789</div>
+            <div class="number">120</div>
+            <img src="https://cdn4.iconfinder.com/data/icons/glyphlibrary-one/100/warning-triangle-1024.png" alt="lainnya" height="100px">
+            <div class="description">Bencana lainnya.</div>
         </div>
     </div>
-    
+    <script>
+        const targets = [4, 10, 120]; // Ganti dengan jumlah yang diinginkan untuk setiap info-box
 
+// Ambil semua elemen dengan class 'number'
+const numberElements = document.querySelectorAll('.number');
+
+// Fungsi untuk menganimasikan perhitungan
+function animateNumber(target, element) {
+    let current = 0;
+    const increment = Math.ceil(target / 100); // Persentase kenaikan, bisa disesuaikan
+    const duration = 5000; // Durasi animasi dalam milidetik (misalnya 2 detik)
+
+    // Fungsi untuk mengupdate nilai elemen 'number'
+    function updateNumber() {
+        if (current < target) {
+            current += increment;
+            if (current > target) {
+                current = target;
+            }
+            element.textContent = current;
+            setTimeout(updateNumber, duration / 20); // Mengatur kecepatan animasi di sini
+        }
+    }
+
+    updateNumber();
+}
+
+// Loop untuk menerapkan animasi ke setiap elemen 'number'
+numberElements.forEach((element, index) => {
+    animateNumber(targets[index], element);
+});
+    </script>
     <section class="features">
-        <h2>Fitur-Fitur Kami</h2>
-        <div class="feature">Fitur 1: Deskripsi fitur yang menarik dan bermanfaat.</div>
-        <div class="feature">Fitur 2: Deskripsi fitur yang menarik dan bermanfaat.</div>
-        <div class="feature">Fitur 3: Deskripsi fitur yang menarik dan bermanfaat.</div>
+        <h2>Layanan-Layanan Kami</h2>
+        <div class="feature">
+            <img src="lapor.png" alt="lapor" height="150px">
+            <h3>Pelaporan Kejadian Bencana</h3>
+        </div>
+        <div class="feature">
+            <img src="infografis.png" alt="info" height="150px">
+            <h3>Infografis Kalsel</h3>
+        </div>
+        <div class="feature">
+            <img src="MITIGASI.png" alt="lapor" height="150px">
+            <h3>Cara mitigasi bencana</h3>
+        </div>
+    </section>
+    <section class="news">
+        <h2>Berita Terkini</h2>
+        <div class="news-item">
+            <img src="https://bnpb.go.id/storage/app/media/autoThumbnailBerita/WhatsApp%20Image%202024-06-21%20at%2012.47.47.webp" alt="Berita 1" >
+            <div>
+                <h3><a href="https://bnpb.go.id/berita/bnpb-berbagi-pengalaman-penanggulangan-bencana-dengan-perwakilan-kantor-pertahanan-sipil-filipina">BNPB Berbagi Pengalaman Penanggulangan Bencana dengan Perwakilan Kantor Pertahanan Sipil Filipina</a></h3>
+                <p>Perwakilan Kantor Pertahanan Sipil /Office of Civil Defense Republik Filipina melakukan kunjungan ke...</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://bnpb.go.id/storage/app/media/autoThumbnailBerita/whatsapp-image-2024-06-21-at-032721-1.webp" alt="Berita 2">
+            <div>
+                <h3><a href="https://bnpb.go.id/berita/kepala-bnpb-targetkan-desember-2024-nusa-tenggara-timur-bebas-rabies">Kepala BNPB Targetkan Desember 2024 Nusa Tenggara Timur Bebas Rabies</a></h3>
+                <p>Kepala BNPB memberikan arahan pada Rakor Penanganan Kejadian Luar Biasa Rabies yang dilakukan di kan....</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://bnpb.go.id/storage/app/media/autoThumbnailBerita/WhatsApp%20Image%202024-06-20%20at%2021.09.08.webp" alt="Berita 3">
+            <div>
+                <h3><a href="https://bnpb.go.id/berita/tanah-longsor-polewali-mandar-sebanyak-970-kk-terisolir">Tanah Longsor Polewali Mandar, Sebanyak 970 KK Terisolir</a></h3>
+                <p>Curah hujan tinggi picu terjadinya tanah longsor di wilayah Kecamatan Tu'ubi Taramanu, Kabupaten Pol...</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <div>
+                <h3><a href="https://bnpb.go.id/berita/page/1">Berita lainnya</a></h3>
+            </div>
     </section>
 </div>
 
@@ -243,6 +445,36 @@
 
     setInterval(showNextSlide, 5000); // Ganti slide setiap 5 detik
 </script>
-
 </body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Main Street, Anytown, Anycountry</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 SISPETIMIBA. All rights reserved.</p>
+    </div>
+</footer>
 </html>

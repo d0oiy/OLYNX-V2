@@ -1,0 +1,154 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+header .logo {
+    height: 50px;
+    margin-right: 1rem;
+}
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+.hero {
+    background: url('hero.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 5rem 0;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+.hero p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+.hero .btn {
+    padding: 0.5rem 1rem;
+    background: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.hero .btn:hover {
+    background: #0056b3;
+}
+section {
+    padding: 2rem 0;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.tips-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.tip-item {
+    width: 200px;
+    text-align: center;
+    margin: 1rem 0;
+}
+.tip-item i {
+    font-size: 4rem;
+    color: #007BFF;
+}
+.tip-item h3 {
+    margin: 0.5rem 0;
+}
+.resource-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.resource-item {
+    width: 200px;
+    text-align: center;
+    margin: 1rem 0;
+}
+.resource-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+.resource-item h3 {
+    margin: 0.5rem 0;
+}
+.resource-item .btn {
+    padding: 0.5rem 1rem;
+    background: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.resource-item .btn:hover {
+    background: #0056b3;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+form input, form textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form button {
+    padding: 0.5rem;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+form button:hover {
+    background: #0056b3;
+}
+footer {
+    background: #333;
+    color: #fff;
+    padding: 2rem 0;
+}
+footer .footer-left, footer .footer-right {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+footer .social-links a {
+    color: #fff;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+}
+footer .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    clear: both;
+}
