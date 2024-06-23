@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+		integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+	<link rel="stylesheet" href="leaflet-sidepanel.css">
+	<title>Leaflet - Side Panel plugin</title>
+	<script src="js.js"></script>
+	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+		crossorigin=""></script>
+	<script src="leaflet-sidepanel.min.js"></script>
+	<style>
+		html,
+		body {
+			margin: 0;
+			font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			height: 100%;
+			color: #1f1412;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+            justify-content: flex-start;
+            position: relative;
+			background-image: url("vulkan.jpg");
+		}
+
+		header {
+            background: #006769;
+            padding: 1rem;
+            display: flex;
+			align-items: center;
+			width: 100vw;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1{
+            color: #fffcfb;
+            position: static;
+        }
+        header a{
+            color: #fffcfb;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        header a:hover{
+            color: #f1f1f1;
+        }
+
+
+		#map {
+			width: 100vh;
+			height: 100vh;
+			border: 1px solid #1f1412;
+			display: flex;
+            align-items: center;
+			justify-content: center;
+            position: relative;
+		}
+
+		@media all and (min-width: 1024px) {
+			#map {
+				height: 768px;
+				width: 1024px;
+			}
+		}
+
+		.sidepanel-content {
+			font-size: 1rem;
+		}
+
+		.sidepanel-content h4 {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.sidepanel-content a {
+			text-decoration: none;
+			font-size: 1rem;
+			color: #3b7bbf;
+			transition: color 0.3s ease-in;
+		}
+
+		.sidepanel-content a:hover {
+			color: #3b7bbf;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<img src="logo new.png" alt="Logo" width="100px" height="1000px">
+		<h1>Sistem Informasi Kalimantan Selatan</h1>
+		<section style="margin-left: 220px;">
+			<a href="home.html">Home</a>
+			<a href="#">About</a>
+			<a href="#">Services</a>
+			<a href="#">Contact</a>  
+		</section>
+	</header>
+	<!-- Map ID -->
+	<div id="map">
+
+		<!-- Side Panel right -->
+		<div id="mySidepanelRight" class="sidepanel" aria-label="side panel" aria-hidden="false">
+			<div class="sidepanel-inner-wrapper">
+				<nav class="sidepanel-tabs-wrapper" aria-label="sidepanel tab navigation">
+					<ul class="sidepanel-tabs">
+						<li class="sidepanel-tab">
+							<a href="" class="sidebar-tab-link" role="tab" data-tab-link="tab-1">
+								Bencana
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="sidepanel-content-wrapper">
+					<div class="sidepanel-content">
+						<div class="sidepanel-tab-content" data-tab-content="tab-1">
+							<table id="output">
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sidepanel-toggle-container">
+				<button class="sidepanel-toggle-button" type="button" aria-label="toggle side panel"></button>
+			</div>
+		</div>
+	</div>
+	<script>
+		const map = L.map('map', {
+			zoomControl: false
+		}).setView([-3.4257, 115.0790], 9);
+		L.control.scale({
+			position: 'topleft'
+		}).addTo(map);
+		L.control.zoom({
+			position: 'bottomright'
+		}).addTo(map);
+
+		const sidepanelRight = L.control.sidepanel('mySidepanelRight', {
+			panelPosition: 'right',
+			tabsPosition: 'top',
+			pushControls: true,
+			darkMode: true,
+			startTab: 0
+		}).addTo(map);
+
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+	</script>
+</body>
+</html>

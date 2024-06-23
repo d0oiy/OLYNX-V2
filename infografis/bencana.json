@@ -1,0 +1,5 @@
+[
+    {"tanggal":"11-12-2013","jenis":"Banjir","lokasi":"Banjarmasin","lat":-3.3325,"long": 114.5847},
+    {"tanggal":"10-12-2015","jenis":"Gempa","lokasi":"Banjarbaru","lat":-3.4504,"long": 114.8291},
+    {"tanggal":"10-12-2015","jenis":"Tsunami","lokasi":"Amuntai","lat":-2.4245,"long": 115.2576}
+]
