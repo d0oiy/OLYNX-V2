@@ -5,7 +5,7 @@ function clear() {
 }
 
 saran = "saran.json"
-bencana= "bencana.json"
+bencana= "/infografis/bencana.json"
 
 function ambil(a) {
     fetch(a)
