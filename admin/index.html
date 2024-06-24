@@ -85,7 +85,10 @@
             </div>
         </div>
     </div>
-    <script>      
+    <script>
+        //addEventListerner untuk mendeteksi user mengklik menu apa
+        //ketika klik menu saran, maka menampilkan judul menu (saran dan masukan) dan tabel head,
+        //lalu memanggil fungsi ambil untuk mengambil data dari saran.json
         document.getElementById('saran').addEventListener('click', function () {
             clear()
             document.getElementById('title').innerHTML= `
@@ -99,8 +102,9 @@
                     <th>Saran dan Masukan</th>
                 `
             ambil_tabel.appendChild(buat_baris_tabel), ambil(saran)})
-
-            document.getElementById('verif').addEventListener('click', function () {
+        //ketika klik menu laporan terverifikasi, maka menampilkan judul menu (laporan terverifikasi) dan tabel head,
+        //lalu memanggil fungsi ambil untuk mengambil data dari bencana.json
+        document.getElementById('verif').addEventListener('click', function () {
             clear()
             document.getElementById('title').innerHTML= `
             <h2>Laporan Terverifikasi</h2>`,
