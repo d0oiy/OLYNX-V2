@@ -14,7 +14,7 @@ function ambil(a) {
     }) 
     
     .then (function(daftar) {
-        if (a==="saran.json") {
+        if (a===saran) {
             let out = ""
         ambil_tabel=document.getElementById('table')
         for(let item of daftar){
@@ -27,7 +27,7 @@ function ambil(a) {
             ambil_tabel.appendChild(buat_baris_tabel)
         }
         }
-        else if (a==="bencana.json") {
+        else if (a===bencana) {
             let out = ""
         ambil_tabel=document.getElementById('table')
         for(let item of daftar){
