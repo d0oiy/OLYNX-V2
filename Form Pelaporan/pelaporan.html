@@ -52,8 +52,21 @@
             cursor: pointer;
             font-weight: bold;
         }
+            .btn2 {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
         .btn:hover {
             background-color: darkgreen;
+        }
+        .btn2:hover {
+            background-color: darkred;
         }
         .report-table {
             width: 100%;
@@ -101,6 +114,7 @@
             <textarea id="deskripsi" rows="4" placeholder="Masukkan deskripsi bencana"></textarea>
         </div>
         <button class="btn" id="submit">Submit Laporan</button>
+        <button class="btn2" id="reset">Reset</button>
 
         <h2>Laporan Kejadian</h2>
         <table class="report-table" id="reportTable">
