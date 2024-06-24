@@ -1,11 +1,14 @@
+// fungsi clear() untuk mengosongkan elemen yang berada di tabel
 function clear() {
     ambil_tabel=document.getElementById('table')
     ambil_tabel.innerHTML=''
 }
 
+//inisialisasi path/jalur file database json
 saran = "saran.json"
 bencana= "/OLYNX-V2/infografis/bencana.json"
 
+//fungsi ambil() untuk mengambil data pada json berdasarkan pilihan
 function ambil(a) {
     fetch(a)
     .then(function(response) {
