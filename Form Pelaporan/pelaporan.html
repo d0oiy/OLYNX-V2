@@ -68,7 +68,7 @@
         .report-table th {
             background-color: #f8f8f8;
         }
-        .btn-edit, .btn-delete {
+        .btn-edit {
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -76,14 +76,8 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        .btn-delete {
-            background-color: #f44336;
-        }
         .btn-edit:hover {
             background-color: #45a049;
-        }
-        .btn-delete:hover {
-            background-color: #e53935;
         }
     </style>
 </head>
@@ -126,7 +120,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getDatabase, ref, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        import { getDatabase, ref, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBp_tiaNIrZX5p2AUDSZzEfElLqWPaKqgs",
@@ -177,7 +171,6 @@
                 <td>${data.deskripsi}</td>
                 <td>
                     <button class="btn-edit" onclick="editReport('${key}', '${data.namaPelapor}', '${data.jenisBencana}', '${data.lokasi}', '${data.deskripsi}')">Edit</button>
-                    <button class="btn-delete" onclick="deleteReport('${key}')">Delete</button>
                 </td>
             `;
             reportData.appendChild(row);
@@ -227,16 +220,6 @@
                     alert('Laporan gagal diupdate');
                 });
         }
-
-        window.deleteReport = function (key) {
-            remove(ref(database, 'laporanBencana/' + key))
-                .then(() => {
-                    alert('Laporan berhasil dihapus');
-                })
-                .catch((error) => {
-                    alert('Laporan gagal dihapus');
-                });
-        };
     </script>
 </body>
 </html>
